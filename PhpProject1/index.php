@@ -30,42 +30,44 @@ th, td {
 		<div class="container theme-showcase" role="main" style="background-color: #EECFA1">
 			<div class="page-header">
 			<h1><center>ÍNDICE DE COMPETITIVIDADE “DENTRO DA PORTEIRA”</center></h1>
+			
 			</div>
 			<br>
 			<br>
-			
+
 		
 			<?php
-				if($_SERVER['REQUEST_METHOD']=='POST'){
-					$request = md5(implode($_POST));
-					if(isset($_SESSION['ultima_request']) && $_SESSION['ultima_request'] == $request){
-						echo "Propriedade já foi inserido";
-					}else{	
-						$_SESSION['ultima_request'] = $request;
-						$nome = $_POST['nome'];
-						$telefone = $_POST['telefone'];
-						$celular = $_POST['celular'];
-						$email = $_POST['email'];
-						$endereco = $_POST['endereco'];
-						$enderecoc = $_POST['enderecoc'];
-						$municipio = $_POST['municipio'];
-
-						$_SESSION['nome'] = $nome;
-						$_SESSION['telefone'] = $telefone;
-						$_SESSION['celular'] = $celular;
-						$_SESSION['email'] = $email;
-						$_SESSION['endereco'] = $endereco;
-						$_SESSION['enderecoc'] = $enderecoc;	
-						$_SESSION['municipio'] = $municipio;
-												
-						$result_dados_pessoais = "INSERT INTO usuarios (nome, telefone, celular, email, endereco, enderecoc, municipio) VALUES ('$nome', '$telefone', '$celular', '$email', '$endereco', '$enderecoc', '$municipio')";
-						$resultado_dados_pessoais= mysqli_query($conn, $result_dados_pessoais);
-						//ID do usuario inserido
-						$ultimo_id = mysqli_insert_id($conn);	
-						echo $ultimo_id;
-					}
-				}
+				
+		
+		$_SESSION['nome'] = $_POST['nome'];
+		$_SESSION['nomep'] = $_POST['nomep'];
+		$_SESSION['celular'] = $_POST['celular'];
+		$_SESSION['email'] = $_POST['email'];
+		$_SESSION['endereco'] = $_POST['endereco'];
+		$_SESSION['enderecoc'] = $_POST['enderecoc'];
+		$_SESSION['municipio'] = $_POST['municipio'];
+		$_SESSION['tipo'] = $_POST['tipo'];
+		$_SESSION['obs'] = $_POST['obs'];
+		$_SESSION['total'] = $_POST['total'];
+		
+	
+	$nome = mysqli_real_escape_string($conn, $_POST['nome']);
+	$nomep = mysqli_real_escape_string($conn, $_POST['nomep']);
+	$celular = mysqli_real_escape_string($conn, $_POST['celular']);
+	$email = mysqli_real_escape_string($conn, $_POST['email']);
+	$endereco = mysqli_real_escape_string($conn, $_POST['endereco']);
+	$enderecoc = mysqli_real_escape_string($conn, $_POST['enderecoc']);
+	$municipio = mysqli_real_escape_string($conn, $_POST['municipio']);
+	$tipo = mysqli_real_escape_string($conn, $_POST['tipo']);
+	$obs = mysqli_real_escape_string($conn, $_POST['obs']);
+	$total = mysqli_real_escape_string($conn, $_POST['total']);
+	
+	
+	$result_dados_pessoais = "INSERT INTO usuarios (nome, nomep, celular, email, endereco, enderecoc, municipio, tipo, obs, total, created) VALUES ('$nome', '$nomep', '$celular', '$email', '$endereco', '$enderecoc', '$municipio', '$tipo', '$obs', '$total',  NOW())";
+						$resultado_dados_pessoais= mysqli_query($conn, $result_dados_pessoais)
 			?>
+			
+	
 			 <ul class="nav nav-tabs" role="tablist">
 				<li role="presentation" class="active"><a href="#dados_pessoais" aria-controls="home" role="tab" data-toggle="tab">Anexo 1 - CARACTERIZAÇÃO DO SISTEMA DE PRODUÇÃO</a></li>
 				<li role="presentation"><a href="#anexo2" aria-controls="anexo2" role="tab" data-toggle="tab">Anexo 2 - QUESTIONÁRIO PARA A MENSURAÇÃO DA COMPETITIVIDADE NA BOVINOCULTURA DE CRIA</a></li>
@@ -91,6 +93,8 @@ th, td {
 					<div style="padding-top:30px;" >
 					<div class="page-header">
 					<h3><center>Anexo 1 - CARACTERIZAÇÃO DO SISTEMA DE PRODUÇÃO</center></h3>
+					<br>
+					<h4><center><u>Caracterização do sistema de produção</u></center></h4>
 					</div>
 						<form class="form-horizontal" action="" method="POST" >
                             <div class="form-group">
@@ -100,13 +104,13 @@ th, td {
                                 </div>
                             </div>
                             <div class="form-group">
-                                <label class="col-sm-2 control-label">Telefone:</label>
+                                <label class="col-sm-2 control-label">Nome Proprietário:</label>
                                 <div class="col-sm-10">
-                                    <input type="text" name='telefone' class="form-control" id="telefone" placeholder="Telefone" value="<?php if(isset($_SESSION['telefone'])){ echo $_SESSION['telefone']; } ?>">
+                                    <input type="text" name='nomep' class="form-control" id="nomep" placeholder="nomep" value="<?php if(isset($_SESSION['nomep'])){ echo $_SESSION['nomep']; } ?>">
                                 </div>
                             </div>
 							<div class="form-group">
-                                <label class="col-sm-2 control-label">Celular:</label>
+                                <label class="col-sm-2 control-label">Telefone / Celular:</label>
                                 <div class="col-sm-10">
                                     <input type="text" name='celular' class="form-control" id="celular" placeholder="Celular" value="<?php if(isset($_SESSION['celular'])){ echo $_SESSION['celular']; } ?>">
                                 </div>
@@ -148,7 +152,7 @@ th, td {
 								<th>Área Total Exata (ha)</th>
 								</tr>
 								<tr>
-								<td><input type="radio" name="tipo" value="mini" checked> Minifúndio <br></td>
+								<td><input type="radio" name="tipo" value="<?php if(isset($_SESSION['0'])){ echo $_SESSION['0']; } ?>" checked  > Minifúndio <br></td>
 								<td>-1 MF</td>
 								<td>- de 28</td>
 								<td>Agricultura Familiar</td>
@@ -159,7 +163,7 @@ th, td {
 								</td>
 								</tr>
 								<tr>
-								<td><input type="radio" name="tipo" value="pequena" checked> Pequena <br></td>
+								<td><input type="radio" name="tipo" value="<?php if(isset($_SESSION['1'])){ echo $_SESSION['1']; } ?>" checked> Pequena <br></td>
 								<td>1 a 4 MF</td>
 								<td>29 – 112</td>
 								<td>Agricultura Familiar</td>
@@ -170,7 +174,7 @@ th, td {
 								</td>
 								</tr>
 								<tr>
-								<td><input type="radio" name="tipo" value="media" checked> Média <br></td>
+								<td><input type="radio" name="tipo" value="<?php if(isset($_SESSION['2'])){ echo $_SESSION['2']; } ?>" checked> Média <br></td>
 								<td>-1 MF</td>
 								<td>- de 28</td>
 								<td>
@@ -185,7 +189,7 @@ th, td {
 								</td>
 								</tr>
 								<tr>
-								<td> <input type="radio" name="tipo" value="grande" checked> Grande <br></td>
+								<td> <input type="radio" name="tipo" value="<?php if(isset($_SESSION['3'])){ echo $_SESSION['3']; } ?>" checked> Grande <br></td>
 								<td>+ de 15 MF</td>
 								<td>+ 420</td>
 								<td>
@@ -206,6 +210,7 @@ th, td {
                             <div class="form-group">
                                 <div class="col-sm-offset-2 col-sm-10">
                                     <button type="submit" class="btn btn-success">Cadastrar</button>
+									
                                 </div>
                             </div>
                         </form>
@@ -215,6 +220,8 @@ th, td {
 					<div style="padding-top:20px;">
 					<div class="page-header">
 					<h3><center>Anexo 1 - CARACTERIZAÇÃO DO SISTEMA DE PRODUÇÃO</center></h3>
+					<br>
+					<h4><center><u>Caracterização do sistema de produção</u></center></h4>
 					</div>
 					 <form class="form-horizontal"  action="" method="POST">
                             <div class="form-group">
@@ -349,6 +356,7 @@ th, td {
                             <div class="form-group">
                                 <div class="col-sm-offset-2 col-sm-10">
                                     <button type="submit" class="btn btn-success">Cadastrar</button>
+									<input class="btn btn-success" type="submit" value="Enviar" onclick="return validar_form_contato()">
                                 </div>
                             </div>
                         </form>
@@ -358,6 +366,8 @@ th, td {
 					<div style="padding-top:20px;">
 					<div class="page-header">
 					<h3><center>Anexo 1 - CARACTERIZAÇÃO DO SISTEMA DE PRODUÇÃO</center></h3>
+					<br>
+					<h4><center><u>Caracterização do sistema de produção</u></center></h4>
 					</div>
 					 <form class="form-horizontal"  action="" method="POST">
                             <div class="form-group">
@@ -437,6 +447,8 @@ th, td {
 					<div style="padding-top:20px;">
 					<div class="page-header">
 					<h3><center>Anexo 1 - CARACTERIZAÇÃO DO SISTEMA DE PRODUÇÃO</center></h3>
+					<br>
+					<h4><center><u>Caracterização do sistema de produção</u></center></h4>
 					</div>
 					 <form class="form-horizontal"  action="" method="POST">
                             <div class="form-group">
@@ -858,6 +870,8 @@ th, td {
 					<div style="padding-top:20px;">
 					<div class="page-header">
 					<h3><center>Anexo 1 - CARACTERIZAÇÃO DO SISTEMA DE PRODUÇÃO</center></h3>
+					<br>
+					<h4><center><u>Caracterização do sistema de produção</u></center></h4>
 					</div>
 					 <form class="form-horizontal"  action="" method="POST">
                             <div class="form-group">
