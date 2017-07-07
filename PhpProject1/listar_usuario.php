@@ -48,14 +48,14 @@
 				</button>
 				<ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
 					<li><a href="index.php">Cadastrar</a></li>
-					<li><a href="gerar_planilha.php">Gerar Relatório Excel</a></li>
+					<li><a href="gerarPlanilhaExecel.php">Gerar Relatório Excel</a></li>
 					<li><a href="#">Gerar Relatório PDF</a></li>
 				</ul>
 			</div>
 			<div class="row espaco">
 				<div class="pull-right">					
 					<a href="index.php"><button type='button' class='btn btn-sm btn-success'>Cadastrar</button></a>
-					<a href="gerar_planilha.php"><button type='button' class='btn btn-sm btn-success'>Gerar Excel</button></a>
+					<a href="gerarPlanilhaExecel.php"><button type='button' class='btn btn-sm btn-success'>Gerar Excel</button></a>
 				</div>
 			</div>
 			<div class="row">

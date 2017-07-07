@@ -21,9 +21,9 @@
 		
 		// Criamos uma tabela HTML com o formato da planilha
 		$html = '';
-		$html .= '<table border="1">';
+		$html .= '<table border="2">';
 		$html .= '<tr>';
-		$html .= '<td colspan="4">Caracterização do sistema de produção</tr>';
+		$html .= '<td colspan="3">Caracterização do sistema de produção</tr>';
 		$html .= '</tr>';
 		
 		$html .= '<tr>';
@@ -31,20 +31,20 @@
 		$html .= '<td><b>Proprietário</b></td>';
 		$html .= '<td><b>Endereco</b></td>';
 		$html .= '<td><b>Municipio</b></td>';
+		
 		$html .= '</tr>';
 		
 		//Selecionar todos os itens da tabela 
 		$result_dados_pessoais = "SELECT * FROM usuarios";
 		$resultado_dados_pessoais = mysqli_query($conn, $result_dados_pessoais);
 		
-		while($row_msg_contatos = mysqli_fetch_assoc($resultado_dados_pessoais)){
+		while($row_dados_pessoais = mysqli_fetch_assoc($resultado_dados_pessoais)){
 			$html .= '<tr>';
-			$html .= '<td>'.$row_msg_contatos["nome"].'</td>';
-			$html .= '<td>'.$row_msg_contatos["nomep"].'</td>';
-			$html .= '<td>'.$row_msg_contatos["endereco"].'</td>';
-			$html .= '<td>'.$row_msg_contatos["municipio"].'</td>';
-			$data = date('d/m/Y H:i:s',strtotime($row_msg_contatos["created"]));
-			$html .= '<td>'.$data.'</td>';
+			$html .= '<td>'.$row_dados_pessoais["nome"].'</td>';
+			$html .= '<td>'.$row_dados_pessoais["nomep"].'</td>';
+			$html .= '<td>'.$row_dados_pessoais["endereco"].'</td>';
+			$html .= '<td>'.$row_dados_pessoais["municipio"].'</td>';
+			
 			$html .= '</tr>';
 			;
 		}
@@ -55,7 +55,7 @@
 		header ("Pragma: no-cache");
 		header ("Content-type: application/x-msexcel");
 		header ("Content-Disposition: attachment; filename=\"{$arquivo}\"" );
-		header ("Content-Description: PHP Generated Data" );
+		
 		// Envia o conteúdo do arquivo
 		echo $html;
 		exit; ?>
