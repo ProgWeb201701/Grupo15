@@ -23,7 +23,7 @@
 		$html = '';
 		$html .= '<table border="2">';
 		$html .= '<tr>';
-		$html .= '<td colspan="3">Caracterização do sistema de produção</tr>';
+		$html .= '<td colspan="9"><center>Caracterização do sistema de produção</center></tr>';
 		$html .= '</tr>';
 		
 		$html .= '<tr>';
@@ -31,7 +31,11 @@
 		$html .= '<td><b>Proprietário</b></td>';
 		$html .= '<td><b>Endereco</b></td>';
 		$html .= '<td><b>Municipio</b></td>';
-		
+		$html .= '<td><b>Telefone / Celular</b></td>';
+		$html .= '<td><b>Email</b></td>';
+		$html .= '<td><b>Tipo</b></td>';
+		$html .= '<td><b>OBservação</b></td>';
+		$html .= '<td><b>Total Hectares</b></td>';
 		$html .= '</tr>';
 		
 		//Selecionar todos os itens da tabela 
@@ -44,6 +48,11 @@
 			$html .= '<td>'.$row_dados_pessoais["nomep"].'</td>';
 			$html .= '<td>'.$row_dados_pessoais["endereco"].'</td>';
 			$html .= '<td>'.$row_dados_pessoais["municipio"].'</td>';
+			$html .= '<td>'.$row_dados_pessoais["celular"].'</td>';
+			$html .= '<td>'.$row_dados_pessoais["email"].'</td>';
+			$html .= '<td>'.$row_dados_pessoais["tipo"].'</td>';
+			$html .= '<td>'.$row_dados_pessoais["obs"].'</td>';
+			$html .= '<td>'.$row_dados_pessoais["total"].'</td>';
 			
 			$html .= '</tr>';
 			;
