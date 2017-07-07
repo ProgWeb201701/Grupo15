@@ -34,10 +34,10 @@
 		$html .= '</tr>';
 		
 		//Selecionar todos os itens da tabela 
-		$result_msg_contatos = "SELECT * FROM mensagens_contatos";
-		$resultado_msg_contatos = mysqli_query($conn , $result_msg_contatos);
+		$result_dados_pessoais = "SELECT * FROM usuarios";
+		$resultado_dados_pessoais = mysqli_query($conn, $result_dados_pessoais);
 		
-		while($row_msg_contatos = mysqli_fetch_assoc($resultado_msg_contatos)){
+		while($row_msg_contatos = mysqli_fetch_assoc($resultado_dados_pessoais)){
 			$html .= '<tr>';
 			$html .= '<td>'.$row_msg_contatos["nome"].'</td>';
 			$html .= '<td>'.$row_msg_contatos["nomep"].'</td>';
