@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Máquina: localhost
--- Data de Criação: 07-Jul-2017 às 03:25
+-- Data de Criação: 07-Jul-2017 às 03:44
 -- Versão do servidor: 5.5.28
 -- versão do PHP: 5.3.19
 
@@ -80,7 +80,7 @@ CREATE TABLE IF NOT EXISTS `gestao` (
   `r2108` int(11) NOT NULL,
   `r2109` int(11) NOT NULL,
   `r21010` int(11) NOT NULL
-) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- Extraindo dados da tabela `gestao`
@@ -108,7 +108,14 @@ CREATE TABLE IF NOT EXISTS `relacao` (
   `r331` int(11) NOT NULL,
   `r332` int(11) NOT NULL,
   `r333` int(11) NOT NULL
-) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Extraindo dados da tabela `relacao`
+--
+
+INSERT INTO `relacao` (`id`, `r311`, `r312`, `r313`, `r314`, `r321`, `r322`, `r323`, `r331`, `r332`, `r333`) VALUES
+(1, 0, 0, 1, 1, 1, 0, 1, 0, 1, 0);
 
 -- --------------------------------------------------------
 
@@ -186,7 +193,14 @@ CREATE TABLE IF NOT EXISTS `tecnologia` (
   `r1108` int(1) NOT NULL,
   `r1109` int(1) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Extraindo dados da tabela `tecnologia`
+--
+
+INSERT INTO `tecnologia` (`id`, `r111`, `r112`, `r113`, `r121`, `r122`, `r123`, `r124`, `r125`, `r126`, `r127`, `r128`, `r129`, `r1210`, `r131`, `r132`, `r133`, `r134`, `r135`, `r136`, `r137`, `r138`, `r141`, `r142`, `r143`, `r144`, `r151`, `r152`, `r153`, `r154`, `r161`, `r162`, `r163`, `r164`, `r165`, `r166`, `r167`, `r168`, `r169`, `r1610`, `r1611`, `r1612`, `r1613`, `r1614`, `r1615`, `r171`, `r172`, `r173`, `r181`, `r182`, `r183`, `r184`, `r185`, `r186`, `r187`, `r188`, `r191`, `r192`, `r193`, `r1101`, `r1102`, `r1103`, `r1104`, `r1105`, `r1106`, `r1107`, `r1108`, `r1109`) VALUES
+(1, 1, 0, 0, 1, 1, 1, 0, 1, 0, 1, 0, 0, 1, 1, 1, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0, 1, 0, 1, 0, 0, 1, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 0, 1, 0, 1, 0, 0, 1, 1, 1, 0, 1, 0, 1, 0, 0, 1, 1, 1, 0, 0);
 
 -- --------------------------------------------------------
 
@@ -206,7 +220,7 @@ CREATE TABLE IF NOT EXISTS `usuarios` (
   `tipo` int(5) NOT NULL,
   `obs` varchar(220) NOT NULL,
   `total` varchar(220) NOT NULL
-) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- Extraindo dados da tabela `usuarios`
