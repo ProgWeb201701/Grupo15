@@ -1,9 +1,4 @@
-<!--**
- * @author Cesar Szpak - Celke -   cesar@celke.com.br
- * @pagina desenvolvida usando framework bootstrap,
- * o código é aberto e o uso é free,
- * porém lembre -se de conceder os créditos ao desenvolvedor.
- *-->
+
  <?php
 	session_start();
 	include_once('conexao.php');
@@ -18,6 +13,12 @@
 		<?php
 		// Definimos o nome do arquivo que será exportado
 		$arquivo = 'msgcontatos.xls';
+		
+		//Selecionar todos os itens da tabela 
+		$result_dados_pessoais = "SELECT * FROM usuarios ";
+		
+		$resultado_dados_pessoais = mysqli_query($conn, $result_dados_pessoais);
+		
 		
 		// Criamos uma tabela HTML com o formato da planilha
 		$html = '';
@@ -38,11 +39,8 @@
 		$html .= '<td><b>Total Hectares</b></td>';
 		$html .= '</tr>';
 		
-		//Selecionar todos os itens da tabela 
-		$result_dados_pessoais = "SELECT * FROM usuarios";
-		$resultado_dados_pessoais = mysqli_query($conn, $result_dados_pessoais);
-		
 		while($row_dados_pessoais = mysqli_fetch_assoc($resultado_dados_pessoais)){
+		
 			$html .= '<tr>';
 			$html .= '<td>'.$row_dados_pessoais["nome"].'</td>';
 			$html .= '<td>'.$row_dados_pessoais["nomep"].'</td>';
@@ -53,10 +51,10 @@
 			$html .= '<td>'.$row_dados_pessoais["tipo"].'</td>';
 			$html .= '<td>'.$row_dados_pessoais["obs"].'</td>';
 			$html .= '<td>'.$row_dados_pessoais["total"].'</td>';
-			
 			$html .= '</tr>';
-			;
 		}
+		
+		
 		// Configurações header para forçar o download
 		header ("Expires: Mon, 26 Jul 1997 05:00:00 GMT");
 		header ("Last-Modified: " . gmdate("D,d M YH:i:s") . " GMT");

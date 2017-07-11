@@ -64,7 +64,8 @@ th, td {
 						$_SESSION['tipo'] = $tipo;
 						$_SESSION['obs'] = $obs;	
 						$_SESSION['total'] = $total;
-												
+						
+																		
 						$result_dados_pessoais = "INSERT INTO usuarios (nome, nomep, celular, email, endereco, enderecoc, municipio, tipo, obs, total) VALUES ('$nome', '$nomep', '$celular', '$email', '$endereco', '$enderecoc', '$municipio', '$tipo', '$obs', '$total')";
 						$resultado_dados_pessoais= mysqli_query($conn, $result_dados_pessoais);
 						
@@ -162,18 +163,18 @@ th, td {
 								<th>Área Total Exata (ha)</th>
 								</tr>
 								<tr>
-								<td><input type="radio" name="tipo" value="<?php if(isset($_SESSION['0'])){ echo $_SESSION['0']; } ?>" checked  > Minifúndio <br></td>
+								<td><input type="radio" name="tipo" value="Minifúndio">  Minifúndio  <br></td>
 								<td>-1 MF</td>
 								<td>- de 28</td>
 								<td>Agricultura Familiar</td>
 								<td>
 								<div class="col-sm-10">
-                                    <input type="text" name='total' class="form-control" id="total" placeholder="total" value="<?php if(isset($_SESSION['total'])){ echo $_SESSION['total']; } ?>">
+								<input type="text" name='total' class="form-control" id="total" placeholder="total" value="<?php if(isset($_SESSION['total'])){ echo $_SESSION['total']; } ?>">
                                 </div>
 								</td>
 								</tr>
 								<tr>
-								<td><input type="radio" name="tipo" value="<?php if(isset($_SESSION['1'])){ echo $_SESSION['1']; } ?>" checked> Pequena <br></td>
+								<td><input type="radio" name="tipo" value="Pequena">  Pequena <br></td>
 								<td>1 a 4 MF</td>
 								<td>29 – 112</td>
 								<td>Agricultura Familiar</td>
@@ -184,7 +185,7 @@ th, td {
 								</td>
 								</tr>
 								<tr>
-								<td><input type="radio" name="tipo" value="<?php if(isset($_SESSION['2'])){ echo $_SESSION['2']; } ?>" checked> Média <br></td>
+								<td><input type="radio" name="tipo" value="Media">  Média <br></td>
 								<td>-1 MF</td>
 								<td>- de 28</td>
 								<td>
@@ -199,7 +200,7 @@ th, td {
 								</td>
 								</tr>
 								<tr>
-								<td> <input type="radio" name="tipo" value="<?php if(isset($_SESSION['3'])){ echo $_SESSION['3']; } ?>" checked> Grande <br></td>
+								<td><input type="radio" name="tipo" value="Grande">  Grande <br></td>
 								<td>+ de 15 MF</td>
 								<td>+ 420</td>
 								<td>

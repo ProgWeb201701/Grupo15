@@ -21,7 +21,7 @@
 			$result_dados_pessoais = "SELECT * FROM usuarios";
 			$resultado_dados_pessoais = mysqli_query($conn, $result_dados_pessoais);
 		
-			//Contar o total de itens
+			//Contar o total de itenspp
 			$total_dados_pessoais = mysqli_num_rows($resultado_dados_pessoais);
 			
 			//Seta a quantidade de itens por página
@@ -39,6 +39,7 @@
 			$total_dados_pessoais = mysqli_num_rows($resultado_dados_pessoais);
 			
 		?>
+		
 		<div class="container theme-showcase" role="main">
 			<div class="page-header">
 				<h1>Lista de Usúarios</h1>
@@ -92,19 +93,9 @@
 									<td class="text-center"><?php echo $row_dados_pessoais["tipo"]; ?></td>
 									<td class="text-center"><?php echo $row_dados_pessoais["obs"]; ?></td>
 									<td class="text-center"><?php echo $row_dados_pessoais["total"]; ?></td>
-									            
+									 <td class="text-center"><a href="GerarExcelPorUsuario.php"><button type='button' class='btn btn-sm btn-success'>Gerar Excel</button></a></td>           
 									
-									<td class="text-center">								
-										<a href="#">
-											<span class="glyphicon glyphicon-eye-open text-primary" aria-hidden="true"></span>
-										</a>
-										<a href="#">
-											<span class="glyphicon glyphicon-pencil text-warning" aria-hidden="true"></span>
-										</a>
-										<a href="#">
-											<span class="glyphicon glyphicon-remove text-danger" aria-hidden="true"></span>
-										</a>
-									</td>
+
 								</tr>
 							<?php } ?>
 						</tbody>
